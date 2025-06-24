@@ -1,7 +1,5 @@
 package com.example.canvasexample.ui.shared
 
-import com.example.canvasexample.ui.play.PlayIntent
-
 sealed class CoreIntent {
 
     data object RaiseScore: CoreIntent()

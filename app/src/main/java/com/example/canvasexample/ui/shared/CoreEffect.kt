@@ -1,7 +1,5 @@
 package com.example.canvasexample.ui.shared
 
-import com.example.canvasexample.ui.play.PlayEffect
-
 sealed class CoreEffect {
 
     data object ShowRaised: CoreEffect()

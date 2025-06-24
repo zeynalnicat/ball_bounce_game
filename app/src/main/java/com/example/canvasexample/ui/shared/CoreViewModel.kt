@@ -3,9 +3,6 @@ package com.example.canvasexample.ui.shared
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.canvasexample.navigation.Screens
-import com.example.canvasexample.ui.play.PlayEffect
-import com.example.canvasexample.ui.play.PlayIntent
-import com.example.canvasexample.ui.play.ScoreHolderState
 import com.github.terrakok.cicerone.Router
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
