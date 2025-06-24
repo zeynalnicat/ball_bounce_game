@@ -80,14 +80,16 @@ class PlayLayouts(context: Context, attributeSet: AttributeSet?=null): View(cont
             velocityX = -velocityX
         }
 
-        if(ballX + ballRadius + velocityX in (startX..endX)  &&  ballY+ballRadius+ velocityY <= paddleY + paddlePaint.strokeWidth  ){
+        if(ballX + ballRadius + 2 * velocityX in (startX-40f..endX-40f)  &&  ballY+ballRadius+ 2* velocityY <= paddleY + paddlePaint.strokeWidth  ){
             velocityY = -velocityY
+            ballY = paddleY + paddlePaint.strokeWidth + 1
             viewModel.onIntent(CoreIntent.RaiseScore)
 
         }
 
         if( ballY + ballRadius >= viewHeight && ballY+ballRadius >= paddleY ){
             velocityY = -velocityY
+
         }
 
         if(ballY + ballRadius <= 0){
