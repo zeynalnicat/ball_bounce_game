@@ -5,6 +5,8 @@ import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.OnBackPressedDispatcher
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.canvasexample.R
@@ -56,12 +58,23 @@ class PlayFragment : Fragment() {
 
         countDownTimer.start()
 
+        val callBack = object: OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                viewModel.onIntent(PlayIntent.OnNavigateToResult)
+                countDownTimer.onFinish()
+            }
+
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,callBack)
+
 
     }
 
     override fun onDestroy() {
         super.onDestroy()
         countDownTimer.onFinish()
+
     }
 
 
