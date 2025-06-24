@@ -33,7 +33,7 @@ class ResultFragment : Fragment() {
         return binding.root
     }
 
-    private fun setNavigation(){
+    private fun setNavigation() {
         binding.btnHome.setOnClickListener {
             coreViewModel.onIntent(CoreIntent.OnNavigateToHome)
         }
@@ -44,13 +44,13 @@ class ResultFragment : Fragment() {
     }
 
 
-    private fun stateListener(){
+    private fun stateListener() {
         lifecycleScope.launch {
             coreViewModel.state.collect {
-                if(it.score<0){
+                if (it.score < 0) {
                     binding.tvScore.setTextColor(resources.getColor(R.color.red))
                     binding.tvScore.text = "Failed"
-                }else{
+                } else {
                     binding.tvTime.visibility = View.VISIBLE
                     binding.tvScore.text = "Score: ${it.score}"
                 }

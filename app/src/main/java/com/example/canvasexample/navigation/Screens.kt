@@ -9,5 +9,5 @@ object Screens {
 
     fun PlayScreen() = FragmentScreen { PlayFragment() }
     fun MenuScreen() = FragmentScreen { MenuFragment() }
-    fun ResultScreen() = FragmentScreen{ ResultFragment()}
+    fun ResultScreen() = FragmentScreen { ResultFragment() }
 }

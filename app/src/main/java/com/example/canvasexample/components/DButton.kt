@@ -14,7 +14,8 @@ import com.example.canvasexample.R
 
 @RequiresApi(Build.VERSION_CODES.Q)
 @SuppressLint("ClickableViewAccessibility")
-class DButton(context: Context, attributeSet: AttributeSet?=null): AppCompatButton(context,attributeSet) {
+class DButton(context: Context, attributeSet: AttributeSet? = null) :
+    AppCompatButton(context, attributeSet) {
 
     private val mPaint = Paint().apply {
         style = Paint.Style.STROKE
@@ -29,10 +30,11 @@ class DButton(context: Context, attributeSet: AttributeSet?=null): AppCompatButt
         setTextColor(resources.getColor(R.color.white))
 
         setOnTouchListener { v, event ->
-            when(event.action){
+            when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     v.animate().scaleX(0.95f).scaleY(0.95f).setDuration(100).start()
                 }
+
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                     v.animate().scaleX(1f).scaleY(1f).setDuration(100).start()
                 }
@@ -40,14 +42,15 @@ class DButton(context: Context, attributeSet: AttributeSet?=null): AppCompatButt
             false
         }
 
-        attributeSet?.let { setAttrs(context,it) }
+        attributeSet?.let { setAttrs(context, it) }
     }
 
     @RequiresApi(Build.VERSION_CODES.Q)
-    private fun setAttrs(context: Context, attributeSet: AttributeSet){
-        val style = context.obtainStyledAttributes(attributeSet,R.styleable.DButton)
+    private fun setAttrs(context: Context, attributeSet: AttributeSet) {
+        val style = context.obtainStyledAttributes(attributeSet, R.styleable.DButton)
 
-        val backgroundDrawable = style.getResourceId(R.styleable.DButton_backgroundDrawable,R.drawable.custom_button)
+        val backgroundDrawable =
+            style.getResourceId(R.styleable.DButton_backgroundDrawable, R.drawable.custom_button)
 
         setBackgroundResource(backgroundDrawable)
     }
@@ -55,7 +58,7 @@ class DButton(context: Context, attributeSet: AttributeSet?=null): AppCompatButt
     override fun onDraw(canvas: Canvas) {
 
 
-        canvas.drawRoundRect(width/4f,height/4f,width/4f,height/4f,30f,30f,mPaint)
+        canvas.drawRoundRect(width / 4f, height / 4f, width / 4f, height / 4f, 30f, 30f, mPaint)
 
         super.onDraw(canvas)
 

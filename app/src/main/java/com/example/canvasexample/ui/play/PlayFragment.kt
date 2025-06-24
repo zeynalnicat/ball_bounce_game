@@ -65,7 +65,7 @@ class PlayFragment : Fragment() {
     }
 
 
-    private fun stateListener(){
+    private fun stateListener() {
         lifecycleScope.launch {
             coreViewModel.state.collect {
                 binding.tvScore.text = it.score.toString()
@@ -75,7 +75,7 @@ class PlayFragment : Fragment() {
 
         lifecycleScope.launch {
             coreViewModel.effect.collect {
-                when(it){
+                when (it) {
                     CoreEffect.ShowDecreased -> {
                         binding.tvScoreInfo.text = "- 10"
                         binding.tvScoreInfo.setTextColor(resources.getColor(R.color.red))
@@ -96,8 +96,8 @@ class PlayFragment : Fragment() {
                         }.start()
 
 
-
                     }
+
                     CoreEffect.ShowRaised -> {
                         binding.tvScoreInfo.text = "+ 20"
                         binding.tvScoreInfo.setTextColor(resources.getColor(R.color.secondary))

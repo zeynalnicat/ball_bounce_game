@@ -7,10 +7,9 @@ import com.example.canvasexample.di.DaggerAppComponent
 
 //import com.example.canvasexample.di.DaggerAppComponent
 
-class MApplication: Application() {
+class MApplication : Application() {
 
     lateinit var appComponent: AppComponent
-
 
 
     override fun onCreate() {

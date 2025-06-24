@@ -12,14 +12,14 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class PlayViewModel @Inject constructor(val router: Router): ViewModel() {
+class PlayViewModel @Inject constructor(val router: Router) : ViewModel() {
 
 
-
-
-    fun onIntent(playIntent: PlayIntent){
-        when(playIntent){
-            PlayIntent.OnNavigateToResult -> {router.replaceScreen(Screens.ResultScreen())}
+    fun onIntent(playIntent: PlayIntent) {
+        when (playIntent) {
+            PlayIntent.OnNavigateToResult -> {
+                router.replaceScreen(Screens.ResultScreen())
+            }
         }
     }
 
