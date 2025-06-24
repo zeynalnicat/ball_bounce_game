@@ -1,6 +1,7 @@
 package com.example.canvasexample.ui.play
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,8 @@ import androidx.lifecycle.lifecycleScope
 import com.example.canvasexample.R
 import com.example.canvasexample.databinding.FragmentPlayBinding
 import com.example.canvasexample.root.MApplication
+import com.example.canvasexample.ui.shared.CoreEffect
+import com.example.canvasexample.ui.shared.CoreViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,7 +20,13 @@ class PlayFragment : Fragment() {
     private lateinit var binding: FragmentPlayBinding
 
     @Inject
+    lateinit var coreViewModel: CoreViewModel
+
+    @Inject
     lateinit var viewModel: PlayViewModel
+
+    private lateinit var countDownTimer: CountDownTimer
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,21 +42,41 @@ class PlayFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         stateListener()
+
+        countDownTimer = object : CountDownTimer(30000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+
+                binding.countDown.text = "${millisUntilFinished / 1000}"
+            }
+
+            override fun onFinish() {
+                viewModel.onIntent(PlayIntent.OnNavigateToResult)
+            }
+        }
+
+        countDownTimer.start()
+
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        countDownTimer.onFinish()
     }
 
 
     private fun stateListener(){
         lifecycleScope.launch {
-            viewModel.state.collect {
+            coreViewModel.state.collect {
                 binding.tvScore.text = it.score.toString()
 
             }
         }
 
         lifecycleScope.launch {
-            viewModel.effect.collect {
+            coreViewModel.effect.collect {
                 when(it){
-                    PlayEffect.ShowDecreased -> {
+                    CoreEffect.ShowDecreased -> {
                         binding.tvScoreInfo.text = "- 10"
                         binding.tvScoreInfo.setTextColor(resources.getColor(R.color.red))
                         binding.tvScoreInfo.animate().apply {
@@ -69,7 +98,7 @@ class PlayFragment : Fragment() {
 
 
                     }
-                    PlayEffect.ShowRaised -> {
+                    CoreEffect.ShowRaised -> {
                         binding.tvScoreInfo.text = "+ 20"
                         binding.tvScoreInfo.setTextColor(resources.getColor(R.color.secondary))
                         binding.tvScoreInfo.animate().apply {
@@ -89,6 +118,8 @@ class PlayFragment : Fragment() {
                         }.start()
 
                     }
+
+                    CoreEffect.NotifyNavigation -> viewModel.onIntent(PlayIntent.OnNavigateToResult)
                 }
             }
         }

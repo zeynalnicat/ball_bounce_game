@@ -8,14 +8,14 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import com.example.canvasexample.root.MApplication
-import com.example.canvasexample.ui.play.PlayIntent
-import com.example.canvasexample.ui.play.PlayViewModel
+import com.example.canvasexample.ui.shared.CoreIntent
+import com.example.canvasexample.ui.shared.CoreViewModel
 import javax.inject.Inject
 
 class PlayLayouts(context: Context, attributeSet: AttributeSet?=null): View(context,attributeSet) {
 
     @Inject
-    lateinit var viewModel: PlayViewModel
+    lateinit var viewModel: CoreViewModel
 
     fun onCreate(application: MApplication){
         application.appComponent.inject(this)
@@ -82,7 +82,7 @@ class PlayLayouts(context: Context, attributeSet: AttributeSet?=null): View(cont
 
         if(ballX + ballRadius + velocityX in (startX..endX)  &&  ballY+ballRadius+ velocityY <= paddleY + paddlePaint.strokeWidth  ){
             velocityY = -velocityY
-            viewModel.onIntent(PlayIntent.RaiseScore)
+            viewModel.onIntent(CoreIntent.RaiseScore)
 
         }
 
@@ -91,7 +91,7 @@ class PlayLayouts(context: Context, attributeSet: AttributeSet?=null): View(cont
         }
 
         if(ballY + ballRadius <= 0){
-            viewModel.onIntent(PlayIntent.DecreaseScore)
+            viewModel.onIntent(CoreIntent.DecreaseScore)
             ballX = width / 2f
             ballY = height / 2f
         }

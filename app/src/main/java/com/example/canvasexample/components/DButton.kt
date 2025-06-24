@@ -8,9 +8,11 @@ import android.graphics.Paint
 import android.os.Build
 import android.util.AttributeSet
 import android.view.MotionEvent
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatButton
 import com.example.canvasexample.R
 
+@RequiresApi(Build.VERSION_CODES.Q)
 @SuppressLint("ClickableViewAccessibility")
 class DButton(context: Context, attributeSet: AttributeSet?=null): AppCompatButton(context,attributeSet) {
 
@@ -22,7 +24,7 @@ class DButton(context: Context, attributeSet: AttributeSet?=null): AppCompatButt
     }
 
     init {
-        setBackgroundResource(R.drawable.custom_button)
+
         isAllCaps = false
         setTextColor(resources.getColor(R.color.white))
 
@@ -37,6 +39,17 @@ class DButton(context: Context, attributeSet: AttributeSet?=null): AppCompatButt
             }
             false
         }
+
+        attributeSet?.let { setAttrs(context,it) }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    private fun setAttrs(context: Context, attributeSet: AttributeSet){
+        val style = context.obtainStyledAttributes(attributeSet,R.styleable.DButton)
+
+        val backgroundDrawable = style.getResourceId(R.styleable.DButton_backgroundDrawable,R.drawable.custom_button)
+
+        setBackgroundResource(backgroundDrawable)
     }
 
     override fun onDraw(canvas: Canvas) {

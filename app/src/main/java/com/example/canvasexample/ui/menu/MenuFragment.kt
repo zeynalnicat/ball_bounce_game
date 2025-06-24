@@ -15,6 +15,8 @@ class MenuFragment : Fragment() {
 
     private lateinit var binding: FragmentMenuBinding
 
+    @Inject
+    lateinit var viewModel: MenuViewModel
 
     @Inject
     lateinit var router: Router
@@ -27,7 +29,7 @@ class MenuFragment : Fragment() {
         (requireActivity().application as MApplication).appComponent.inject(this)
 
         binding.btnPlay.setOnClickListener {
-            router.navigateTo(Screens.PlayScreen())
+            viewModel.onIntent(MenuIntent.OnNavigateToPlay)
         }
         return binding.root
     }
