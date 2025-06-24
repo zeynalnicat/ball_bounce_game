@@ -7,9 +7,19 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import com.example.canvasexample.root.MApplication
+import com.example.canvasexample.ui.play.PlayIntent
+import com.example.canvasexample.ui.play.PlayViewModel
+import javax.inject.Inject
 
 class PlayLayouts(context: Context, attributeSet: AttributeSet?=null): View(context,attributeSet) {
 
+    @Inject
+    lateinit var viewModel: PlayViewModel
+
+    fun onCreate(application: MApplication){
+        application.appComponent.inject(this)
+    }
 
     private val mPaint = Paint().apply {
         color = Color.WHITE
@@ -22,7 +32,7 @@ class PlayLayouts(context: Context, attributeSet: AttributeSet?=null): View(cont
         color = Color.YELLOW
         style = Paint.Style.FILL
         isAntiAlias = true
-        strokeWidth = 12f
+        strokeWidth = 30f
     }
 
     private var ballX = width/2f
@@ -70,22 +80,23 @@ class PlayLayouts(context: Context, attributeSet: AttributeSet?=null): View(cont
             velocityX = -velocityX
         }
 
-        if(ballX + ballRadius in (startX..endX)  && ballY + ballRadius <= paddleY - paddlePaint.strokeWidth/2  ){
+        if(ballX + ballRadius + velocityX in (startX..endX)  &&  ballY+ballRadius+ velocityY <= paddleY + paddlePaint.strokeWidth  ){
             velocityY = -velocityY
-            ballY = paddleY - ballRadius
+            viewModel.onIntent(PlayIntent.RaiseScore)
+
         }
 
-        if(ballY <=0 || ballY + ballRadius >= viewHeight){
+        if( ballY + ballRadius >= viewHeight && ballY+ballRadius >= paddleY ){
             velocityY = -velocityY
         }
 
+        if(ballY + ballRadius <= 0){
+            viewModel.onIntent(PlayIntent.DecreaseScore)
+            ballX = width / 2f
+            ballY = height / 2f
+        }
 
-
-
-
-
-
-          postInvalidateOnAnimation()
+        postInvalidateOnAnimation()
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {

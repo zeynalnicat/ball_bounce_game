@@ -1,11 +1,10 @@
-package com.example.canvasexample.ui
+package com.example.canvasexample.ui.menu
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.canvasexample.R
+import androidx.fragment.app.Fragment
 import com.example.canvasexample.databinding.FragmentMenuBinding
 import com.example.canvasexample.navigation.Screens
 import com.example.canvasexample.root.MApplication

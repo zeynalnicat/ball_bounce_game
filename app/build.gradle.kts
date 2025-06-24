@@ -51,7 +51,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.cicerone)
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
