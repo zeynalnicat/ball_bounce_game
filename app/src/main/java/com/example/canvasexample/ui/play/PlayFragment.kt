@@ -60,7 +60,6 @@ class PlayFragment : Fragment() {
 
         val callBack = object: OnBackPressedCallback(true){
             override fun handleOnBackPressed() {
-                viewModel.onIntent(PlayIntent.OnNavigateToResult)
                 countDownTimer.onFinish()
             }
 

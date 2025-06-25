@@ -11,12 +11,38 @@
        android:id="@+id/btnPlay"
        android:layout_width="200dp"
        android:layout_height="wrap_content"
-       android:text="Play"
+       android:text="Play (Easy)"
        android:textStyle="bold"
        app:layout_constraintTop_toTopOf="parent"
        app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintStart_toStartOf="parent"
        tools:targetApi="29" />
+
+   <com.example.canvasexample.components.DButton
+       android:id="@+id/btnMedium"
+       android:layout_height="wrap_content"
+       android:layout_width="wrap_content"
+       android:text="Medium"
+       app:layout_constraintEnd_toStartOf="@id/btnHard"
+       app:layout_constraintTop_toBottomOf="@id/btnPlay"
+       android:layout_marginTop="16dp"
+       app:backgroundDrawable="@drawable/custom_button_orange"
+       app:layout_constraintStart_toStartOf="@id/btnPlay"
+       tools:targetApi="29"
+      />
+
+   <com.example.canvasexample.components.DButton
+       android:id="@+id/btnHard"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Hard"
+       app:backgroundDrawable="@drawable/custom_button_red"
+       app:layout_constraintEnd_toEndOf="@id/btnPlay"
+       app:layout_constraintStart_toEndOf="@id/btnMedium"
+       app:layout_constraintTop_toTopOf="@+id/btnMedium"
+       tools:targetApi="29" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

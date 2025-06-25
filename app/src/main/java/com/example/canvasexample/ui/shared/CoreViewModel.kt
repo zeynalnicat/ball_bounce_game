@@ -28,8 +28,22 @@ class CoreViewModel @Inject constructor(private val router: Router) : ViewModel(
             CoreIntent.DecreaseScore -> decreaseScore()
             CoreIntent.OnNavigateToHome -> navigateToHome()
             CoreIntent.OnNavigateToPlay -> navigateToPlay()
+            is CoreIntent.OnSetDifficulty -> setDifficultyStates(coreIntent.difficulty)
+            CoreIntent.OnChangeVelocityX -> _state.update { it.copy(velocityX = - _state.value.velocityX) }
+            CoreIntent.OnChangeVelocityY -> _state.update { it.copy(velocityY = - _state.value.velocityY) }
         }
     }
+
+    private fun setDifficultyStates(difficulty: Difficulty){
+        when(difficulty){
+            Difficulty.EASY -> {
+                _state.update { it.copy(ballRadius = 200f, paddleWidth = 300f, velocityX = 15f, velocityY = 20f) }
+            }
+            Difficulty.MEDIUM -> _state.update { it.copy(ballRadius = 100f, paddleWidth = 200f, velocityX = 20f, velocityY = 25f) }
+            Difficulty.HARD -> _state.update { it.copy(ballRadius = 50f, paddleWidth = 150f, velocityY = 30f, velocityX = 30f) }
+        }
+    }
+
 
     private fun navigateToHome() {
         _state.update { it.copy(score = 0) }
