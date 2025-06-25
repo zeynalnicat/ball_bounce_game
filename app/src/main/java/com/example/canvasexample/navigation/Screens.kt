@@ -1,5 +1,6 @@
 package com.example.canvasexample.navigation
 
+import com.example.canvasexample.ui.touch_ball.TouchToBounceFragment
 import com.example.canvasexample.ui.menu.MenuFragment
 import com.example.canvasexample.ui.play.PlayFragment
 import com.example.canvasexample.ui.result.ResultFragment
@@ -10,4 +11,5 @@ object Screens {
     fun PlayScreen() = FragmentScreen { PlayFragment() }
     fun MenuScreen() = FragmentScreen { MenuFragment() }
     fun ResultScreen() = FragmentScreen { ResultFragment() }
+    fun BounceBallScreen() = FragmentScreen { TouchToBounceFragment() }
 }

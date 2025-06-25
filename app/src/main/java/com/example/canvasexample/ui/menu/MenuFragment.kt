@@ -49,6 +49,10 @@ class MenuFragment : Fragment() {
             coreViewModel.onIntent(CoreIntent.OnSetDifficulty(Difficulty.HARD))
             viewModel.onIntent(MenuIntent.OnNavigateToPlay)
         }
+
+        binding.btnTouchToBall.setOnClickListener {
+            viewModel.onIntent(MenuIntent.OnNavigateToBounceBall)
+        }
         return binding.root
     }
 

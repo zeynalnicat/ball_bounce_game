@@ -13,6 +13,7 @@
        android:layout_height="wrap_content"
        android:text="Play (Easy)"
        android:textStyle="bold"
+       app:layout_constraintVertical_bias="0.4"
        app:layout_constraintTop_toTopOf="parent"
        app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintEnd_toEndOf="parent"
@@ -41,6 +42,17 @@
        app:layout_constraintEnd_toEndOf="@id/btnPlay"
        app:layout_constraintStart_toEndOf="@id/btnMedium"
        app:layout_constraintTop_toTopOf="@+id/btnMedium"
+       tools:targetApi="29" />
+   <com.example.canvasexample.components.DButton
+       android:id="@+id/btnTouchToBall"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Bounce The Ball"
+       app:backgroundDrawable="@drawable/custom_button_blue"
+       app:layout_constraintEnd_toEndOf="@id/btnPlay"
+       app:layout_constraintStart_toStartOf="@id/btnPlay"
+       app:layout_constraintTop_toBottomOf="@id/btnMedium"
+       android:layout_marginTop="16dp"
        tools:targetApi="29" />
 
 

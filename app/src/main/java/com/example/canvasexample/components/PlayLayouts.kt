@@ -79,7 +79,7 @@ class PlayLayouts(context: Context, attributeSet: AttributeSet? = null) :
 
         if (ballX +  viewModel.state.value.ballRadius + 2 * viewModel.state.value.velocityX in (startX - 40f..endX - 40f) && ballY +  viewModel.state.value.ballRadius + 2 * viewModel.state.value.velocityY <= paddleY + paddlePaint.strokeWidth - 70f) {
             viewModel.onIntent(CoreIntent.OnChangeVelocityY)
-            ballY = paddleY + paddlePaint.strokeWidth + 1
+            ballY = (paddleY + paddlePaint.strokeWidth + 1)
             viewModel.onIntent(CoreIntent.RaiseScore)
 
         }

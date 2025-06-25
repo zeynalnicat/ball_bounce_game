@@ -2,9 +2,11 @@ package com.example.canvasexample.di
 
 import com.example.canvasexample.MainActivity
 import com.example.canvasexample.components.PlayLayouts
+import com.example.canvasexample.components.TouchToBounceLayout
 import com.example.canvasexample.ui.menu.MenuFragment
 import com.example.canvasexample.ui.play.PlayFragment
 import com.example.canvasexample.ui.result.ResultFragment
+import com.example.canvasexample.ui.touch_ball.TouchToBounceFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -17,4 +19,6 @@ interface AppComponent {
     fun inject(menuFragment: MenuFragment)
     fun inject(playLayouts: PlayLayouts)
     fun inject(resultFragment: ResultFragment)
+    fun inject(touchBallFragment: TouchToBounceFragment)
+    fun inject(touchToBounceLayout: TouchToBounceLayout)
 }
