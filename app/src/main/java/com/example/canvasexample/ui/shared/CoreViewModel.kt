@@ -31,6 +31,8 @@ class CoreViewModel @Inject constructor(private val router: Router) : ViewModel(
             is CoreIntent.OnSetDifficulty -> setDifficultyStates(coreIntent.difficulty)
             CoreIntent.OnChangeVelocityX -> _state.update { it.copy(velocityX = - _state.value.velocityX) }
             CoreIntent.OnChangeVelocityY -> _state.update { it.copy(velocityY = - _state.value.velocityY) }
+            CoreIntent.OnFail -> viewModelScope.launch { _effect.emit(CoreEffect.OnFail) }
+            CoreIntent.OnReset -> _state.update { it.copy(score = 0) }
         }
     }
 
@@ -70,7 +72,7 @@ class CoreViewModel @Inject constructor(private val router: Router) : ViewModel(
         _state.update { it.copy(score = _state.value.score - 10) }
         if (_state.value.score < 0) {
             viewModelScope.launch {
-                _effect.emit(CoreEffect.NotifyNavigation)
+                _effect.emit(CoreEffect.OnFail)
             }
 
         }

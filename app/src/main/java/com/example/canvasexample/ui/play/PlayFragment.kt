@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.OnBackPressedDispatcher
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.canvasexample.R
 import com.example.canvasexample.databinding.FragmentPlayBinding
 import com.example.canvasexample.root.MApplication
 import com.example.canvasexample.ui.shared.CoreEffect
+import com.example.canvasexample.ui.shared.CoreIntent
 import com.example.canvasexample.ui.shared.CoreViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -45,6 +45,8 @@ class PlayFragment : Fragment() {
 
         stateListener()
 
+
+
         countDownTimer = object : CountDownTimer(30000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
 
@@ -52,7 +54,7 @@ class PlayFragment : Fragment() {
             }
 
             override fun onFinish() {
-                viewModel.onIntent(PlayIntent.OnNavigateToResult)
+                animationOnWin()
             }
         }
 
@@ -130,11 +132,89 @@ class PlayFragment : Fragment() {
                         }.start()
 
                     }
-
-                    CoreEffect.NotifyNavigation -> viewModel.onIntent(PlayIntent.OnNavigateToResult)
+                    CoreEffect.OnFail -> animationOnFail()
                 }
             }
         }
+
+
+
+    }
+
+    private fun animationOnWin(){
+        binding.tvResult.text = "Time out & Score: ${coreViewModel.state.value.score}"
+        binding.tvResult.setTextColor(resources.getColor(R.color.secondary))
+        setCommonAnimation()
+    }
+
+    private fun animationOnFail(){
+        binding.tvResult.text = "YOU FAIL!"
+        binding.tvResult.setTextColor(resources.getColor(R.color.red))
+        setCommonAnimation()
+    }
+
+    private fun setCommonAnimation(){
+        binding.playLayouts.visibility = View.GONE
+        binding.tvResult.animate().apply {
+            alpha(1f)
+            scaleY(1f)
+            scaleX(1f)
+            duration = 500
+            start()
+        }
+        binding.btnHome.animate().apply {
+            alpha(1f)
+            scaleY(1f)
+            scaleX(1f)
+            duration = 500
+            start()
+        }
+
+        binding.btnTryAgain.animate().apply {
+            alpha(1f)
+            scaleY(1f)
+            scaleX(1f)
+            duration = 500
+            start()
+        }
+
+        binding.btnHome.setOnClickListener {
+            coreViewModel.onIntent(CoreIntent.OnReset)
+            coreViewModel.onIntent(CoreIntent.OnNavigateToHome)
+
+        }
+
+        binding.btnTryAgain.setOnClickListener {
+            resetAnim()
+        }
+    }
+
+    private fun resetAnim(){
+        countDownTimer.start()
+        binding.tvResult.animate().apply {
+            alpha(0f)
+            scaleY(0f)
+            scaleX(0f)
+            duration = 300
+            start()
+        }
+        binding.btnHome.animate().apply {
+            alpha(0f)
+            scaleY(0f)
+            scaleX(0f)
+            duration = 300
+            start()
+        }
+
+        binding.btnTryAgain.animate().apply {
+            alpha(0f)
+            scaleY(0f)
+            scaleX(0f)
+            duration = 300
+            start()
+        }
+        coreViewModel.onIntent(CoreIntent.OnReset)
+        binding.playLayouts.visibility = View.VISIBLE
 
     }
 

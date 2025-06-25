@@ -9,4 +9,6 @@ sealed class CoreIntent {
     data class OnSetDifficulty(val difficulty: Difficulty): CoreIntent()
     data object OnChangeVelocityX : CoreIntent()
     data object  OnChangeVelocityY: CoreIntent()
+    data object OnFail : CoreIntent()
+    data object OnReset: CoreIntent()
 }

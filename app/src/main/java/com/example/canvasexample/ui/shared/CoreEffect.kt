@@ -4,5 +4,5 @@ sealed class CoreEffect {
 
     data object ShowRaised : CoreEffect()
     data object ShowDecreased : CoreEffect()
-    data object NotifyNavigation : CoreEffect()
+    data object OnFail : CoreEffect()
 }

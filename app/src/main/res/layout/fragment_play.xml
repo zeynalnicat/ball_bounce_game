@@ -11,8 +11,8 @@
 
     <com.example.canvasexample.components.PlayLayouts
         android:id="@+id/playLayouts"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="417dp"
+        android:layout_height="728dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -75,12 +75,62 @@
         android:id="@+id/countDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="43dp"
         android:layout_marginBottom="30dp"
         android:textColor="@color/stopwatch"
         tools:text="0"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent" />
 
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You Win!"
+        android:alpha="0"
+        android:textSize="40sp"
+        android:scaleY="0.5"
+        android:scaleX="0.5"
+        android:textColor="@color/secondary"
+        app:layout_constraintVertical_bias="0.45"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.example.canvasexample.components.DButton
+        android:id="@+id/btnTryAgain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Try Again"
+        android:alpha="0"
+        android:scaleY="0.5"
+        android:scaleX="0.5"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:backgroundDrawable="@drawable/custom_button_red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/btnHome"
+        app:layout_constraintTop_toTopOf="@id/btnHome"
+        tools:targetApi="29" />
+
+    <com.example.canvasexample.components.DButton
+        android:id="@+id/btnHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Home"
+        android:scaleY="0.5"
+        android:scaleX="0.5"
+        android:textStyle="bold"
+        android:alpha="0"
+        app:layout_constraintEnd_toStartOf="@+id/btnTryAgain"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvResult"
+        tools:targetApi="29" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

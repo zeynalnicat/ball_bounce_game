@@ -1,5 +1,7 @@
 package com.example.canvasexample.ui.shared
 
+import android.os.CountDownTimer
+
 
 data class CoreState(
     val score: Int = 0,
@@ -7,6 +9,7 @@ data class CoreState(
     val paddleWidth: Float = 300f,
     val velocityX: Float =15f,
     val velocityY : Float =20f,
+    val countDownTimer:Int = 30000
 )
 
 enum class Difficulty {
