@@ -7,6 +7,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import com.example.canvasexample.R
 import com.example.canvasexample.root.MApplication
 import com.example.canvasexample.ui.shared.CoreIntent
 import com.example.canvasexample.ui.shared.CoreViewModel
@@ -24,17 +25,21 @@ class PlayLayouts(context: Context, attributeSet: AttributeSet? = null) :
     }
 
     private val mPaint = Paint().apply {
-        color = Color.WHITE
+        color = resources.getColor(R.color.stopwatch)
         style = Paint.Style.FILL
         isAntiAlias = true
-
     }
 
     private val paddlePaint = Paint().apply {
-        color = Color.YELLOW
+        color = Color.WHITE
         style = Paint.Style.FILL
         isAntiAlias = true
         strokeWidth = 30f
+    }
+
+    private val linePaint = Paint().apply {
+        color = Color.BLACK
+        isAntiAlias = true
     }
 
     private var ballX = width /2f
@@ -69,6 +74,8 @@ class PlayLayouts(context: Context, attributeSet: AttributeSet? = null) :
 
         canvas.drawLine(startX, paddleY, endX, paddleY, paddlePaint)
         canvas.drawCircle(ballX, ballY, viewModel.state.value.ballRadius, mPaint)
+        canvas.drawLine(ballX + viewModel.state.value.ballRadius,ballY + viewModel.state.value.ballRadius,ballX-viewModel.state.value.ballRadius,ballY - viewModel.state.value.ballRadius,linePaint)
+        canvas.drawLine(ballX-viewModel.state.value.ballRadius,ballY - viewModel.state.value.ballRadius,ballX + viewModel.state.value.ballRadius,ballY + viewModel.state.value.ballRadius,linePaint)
 
         ballX += viewModel.state.value.velocityX
         ballY += viewModel.state.value.velocityY
@@ -92,7 +99,7 @@ class PlayLayouts(context: Context, attributeSet: AttributeSet? = null) :
         if (ballY +  viewModel.state.value.ballRadius <= 0) {
             viewModel.onIntent(CoreIntent.DecreaseScore)
             ballX = width / 2f
-            ballY = height / 2f
+            ballY = 600f
         }
 
         postInvalidateOnAnimation()

@@ -1,22 +1,17 @@
 package com.example.canvasexample.components
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.BitmapShader
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.Paint
-import android.graphics.Shader
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
-import androidx.core.content.ContextCompat
 import com.example.canvasexample.R
 import com.example.canvasexample.root.MApplication
 import com.example.canvasexample.ui.touch_ball.TouchBallIntent
 import com.example.canvasexample.ui.touch_ball.TouchBallViewModel
 import javax.inject.Inject
-import androidx.core.graphics.scale
 
 class TouchToBounceLayout(context: Context, attributeSet: AttributeSet) :
     View(context, attributeSet) {
@@ -37,6 +32,11 @@ class TouchToBounceLayout(context: Context, attributeSet: AttributeSet) :
     private val mPaint = Paint().apply {
         color = resources.getColor(R.color.stopwatch)
         style = Paint.Style.FILL
+        isAntiAlias = true
+    }
+
+    private val linePaint = Paint().apply {
+        color = Color.BLACK
         isAntiAlias = true
     }
 
@@ -63,6 +63,8 @@ class TouchToBounceLayout(context: Context, attributeSet: AttributeSet) :
         }
 
         canvas.drawCircle(ballX, viewModel.state.value.ballY, ballRadius, mPaint)
+        canvas.drawLine(ballX + ballRadius,viewModel.state.value.ballY + ballRadius,ballX-ballRadius,viewModel.state.value.ballY - ballRadius,linePaint)
+
 
         postInvalidateOnAnimation()
     }
