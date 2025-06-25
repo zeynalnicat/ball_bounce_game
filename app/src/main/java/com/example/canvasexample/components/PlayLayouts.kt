@@ -53,16 +53,6 @@ class PlayLayouts(context: Context, attributeSet: AttributeSet? = null) :
     private var viewHeight = 0
 
 
-    init {
-
-        attributeSet?.let { setAttrs(context, it) }
-    }
-
-    private fun setAttrs(context: Context, attributeSet: AttributeSet) {
-
-    }
-
-
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
