@@ -1,16 +1,22 @@
 package com.example.canvasexample.components
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.BitmapShader
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.Shader
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import androidx.core.content.ContextCompat
 import com.example.canvasexample.R
 import com.example.canvasexample.root.MApplication
 import com.example.canvasexample.ui.touch_ball.TouchBallIntent
 import com.example.canvasexample.ui.touch_ball.TouchBallViewModel
 import javax.inject.Inject
+import androidx.core.graphics.scale
 
 class TouchToBounceLayout(context: Context, attributeSet: AttributeSet) :
     View(context, attributeSet) {
@@ -24,14 +30,17 @@ class TouchToBounceLayout(context: Context, attributeSet: AttributeSet) :
         application.appComponent.inject(this)
     }
 
+    private val ballRadius = 50f
+    private val ballX = 400f
+
+
     private val mPaint = Paint().apply {
         color = resources.getColor(R.color.stopwatch)
         style = Paint.Style.FILL
         isAntiAlias = true
     }
 
-    private val ballRadius = 50f
-    private val ballX = 400f
+
 
     private var fallVelocityY = 10f
     private var clickVelocityY = 100f
@@ -52,7 +61,6 @@ class TouchToBounceLayout(context: Context, attributeSet: AttributeSet) :
         if (viewModel.state.value.ballY + ballRadius <= 0) {
             viewModel.onIntent(TouchBallIntent.OnWin)
         }
-
 
         canvas.drawCircle(ballX, viewModel.state.value.ballY, ballRadius, mPaint)
 
