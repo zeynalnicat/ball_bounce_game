@@ -87,8 +87,8 @@ class PlayLayouts(context: Context, attributeSet: AttributeSet? = null) :
 
         if (ballY +  viewModel.state.value.ballRadius <= 0) {
             viewModel.onIntent(CoreIntent.DecreaseScore)
-            ballX = viewWidth/2f
-            ballY = 600f
+            ballX = 700f
+            ballY = height - 200f
         }
 
         postInvalidateOnAnimation()
