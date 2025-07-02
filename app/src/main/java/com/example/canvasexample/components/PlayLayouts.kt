@@ -64,7 +64,6 @@ class PlayLayouts(context: Context, attributeSet: AttributeSet? = null) :
         canvas.drawLine(startX, paddleY, endX, paddleY, paddlePaint)
         canvas.drawCircle(ballX, ballY, viewModel.state.value.ballRadius, mPaint)
         canvas.drawLine(ballX + viewModel.state.value.ballRadius,ballY + viewModel.state.value.ballRadius,ballX-viewModel.state.value.ballRadius,ballY - viewModel.state.value.ballRadius,linePaint)
-        canvas.drawLine(ballX-viewModel.state.value.ballRadius,ballY - viewModel.state.value.ballRadius,ballX + viewModel.state.value.ballRadius,ballY + viewModel.state.value.ballRadius,linePaint)
 
         ballX += viewModel.state.value.velocityX
         ballY += viewModel.state.value.velocityY
@@ -73,7 +72,7 @@ class PlayLayouts(context: Context, attributeSet: AttributeSet? = null) :
             viewModel.onIntent(CoreIntent.OnChangeVelocityX)
         }
 
-        if (ballX +  viewModel.state.value.ballRadius + 2 * viewModel.state.value.velocityX in (startX - 40f..endX - 40f) && ballY +  viewModel.state.value.ballRadius + 2 * viewModel.state.value.velocityY <= paddleY + paddlePaint.strokeWidth - 70f) {
+        if (ballX +  viewModel.state.value.ballRadius + 2 * viewModel.state.value.velocityX in (startX - 40f..endX + 40f) && ballY +  viewModel.state.value.ballRadius + 2 * viewModel.state.value.velocityY <= paddleY + paddlePaint.strokeWidth + 70f) {
             viewModel.onIntent(CoreIntent.OnChangeVelocityY)
             ballY = (paddleY + paddlePaint.strokeWidth + 1)
             viewModel.onIntent(CoreIntent.RaiseScore)
