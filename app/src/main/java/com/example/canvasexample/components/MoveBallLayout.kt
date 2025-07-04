@@ -37,7 +37,7 @@ class MoveBallLayout(context: Context, attributeSet: AttributeSet) : View(contex
 
     private var ballX = 0f
     private var ballY = 0f
-    private var ballRadius = 40f
+    private var ballRadius = 80f
 
     private var barrierPaddleWidth: Float? = null
 
@@ -58,7 +58,7 @@ class MoveBallLayout(context: Context, attributeSet: AttributeSet) : View(contex
         barrierY += velocityBarrierY
 
         if (barrierPaddleWidth == null) {
-            barrierPaddleWidth = (0..viewWidth / 2).random().toFloat()
+            barrierPaddleWidth = (viewWidth/10..viewWidth / 3).random().toFloat()
         }
 
         if (barrierPaddleCenterX == null) {
