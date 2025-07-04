@@ -17,6 +17,8 @@ import com.example.canvasexample.ui.shared.CoreIntent
 import com.example.canvasexample.ui.shared.CoreViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.math.floor
+import kotlin.math.min
 
 class PlayFragment : Fragment() {
 
@@ -51,10 +53,13 @@ class PlayFragment : Fragment() {
 
 
 
-        countDownTimer = object : CountDownTimer(30000, 1000) {
+        countDownTimer = object : CountDownTimer(90000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-
-                binding.countDown.text = "${millisUntilFinished / 1000}"
+                val minute = (millisUntilFinished / 60000).toInt()
+                val seconds = (millisUntilFinished / 1000) - minute*60
+                val minutesInText = if(minute<10) "0$minute" else "$minute"
+                val secondsInText = if(seconds<10) "0$seconds" else "$seconds"
+                binding.countDown.text = minutesInText + ":" + secondsInText
             }
 
             override fun onFinish() {

@@ -75,12 +75,12 @@
         android:id="@+id/countDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="43dp"
         android:layout_marginBottom="30dp"
         android:textColor="@color/stopwatch"
-        tools:text="0"
         app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        tools:text="0" />
 
 
     <TextView
