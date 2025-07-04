@@ -118,7 +118,7 @@ class PlayFragment : Fragment() {
     }
 
     private fun animationOnWin(){
-        binding.tvResult.text = "Time out & Score: ${coreViewModel.state.value.score}"
+        binding.tvResult.text = "Time out"
         binding.tvResult.setTextColor(resources.getColor(R.color.secondary))
         setCommonAnimation()
 

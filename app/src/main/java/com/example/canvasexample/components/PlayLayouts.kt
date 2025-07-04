@@ -72,9 +72,17 @@ class PlayLayouts(context: Context, attributeSet: AttributeSet? = null) :
             viewModel.onIntent(CoreIntent.OnChangeVelocityX)
         }
 
-        if (ballX +  viewModel.state.value.ballRadius + 2 * viewModel.state.value.velocityX in (startX - 40f..endX + 40f) && ballY +  viewModel.state.value.ballRadius + 2 * viewModel.state.value.velocityY <= paddleY + paddlePaint.strokeWidth + 70f) {
+        val paddleTop = paddleY - paddlePaint.strokeWidth/2
+        val paddleBottom = paddleY + paddlePaint.strokeWidth/2
+
+        val ballTop = ballY - viewModel.state.value.ballRadius
+        val ballBottom = ballY + viewModel.state.value.ballRadius
+
+        val ballHitsVertically = ballBottom >= paddleTop && ballTop <= paddleBottom
+        val ballHitsHorizontally = ballX  in (startX - 40f..endX + 40f)
+
+        if (ballHitsHorizontally && ballHitsVertically ) {
             viewModel.onIntent(CoreIntent.OnChangeVelocityY)
-            ballY = (paddleY + paddlePaint.strokeWidth + 1)
             viewModel.onIntent(CoreIntent.RaiseScore)
 
         }
