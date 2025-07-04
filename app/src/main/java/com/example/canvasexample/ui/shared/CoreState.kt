@@ -1,7 +1,5 @@
 package com.example.canvasexample.ui.shared
 
-import android.os.CountDownTimer
-
 
 data class CoreState(
     val score: Int = 0,

@@ -10,7 +10,6 @@ import com.example.canvasexample.R
 import com.example.canvasexample.core.animation.Animation
 import com.example.canvasexample.databinding.FragmentTouchToBounceBinding
 import com.example.canvasexample.root.MApplication
-import com.example.canvasexample.ui.shared.CoreIntent
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

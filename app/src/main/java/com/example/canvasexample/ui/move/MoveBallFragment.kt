@@ -1,18 +1,16 @@
 package com.example.canvasexample.ui.move
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.canvasexample.R
 import com.example.canvasexample.core.animation.Animation
 import com.example.canvasexample.databinding.FragmentMoveBallBinding
 import com.example.canvasexample.root.MApplication
-import com.example.canvasexample.ui.shared.CoreIntent
-import com.example.canvasexample.ui.touch_ball.TouchBallIntent
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
