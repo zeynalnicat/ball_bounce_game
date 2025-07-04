@@ -55,6 +55,18 @@
        android:layout_marginTop="16dp"
        tools:targetApi="29" />
 
+   <com.example.canvasexample.components.DButton
+       android:id="@+id/btnBarrier"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Barrier"
+       app:backgroundDrawable="@drawable/custom_button_purple"
+       app:layout_constraintEnd_toEndOf="@id/btnPlay"
+       app:layout_constraintStart_toStartOf="@id/btnPlay"
+       app:layout_constraintTop_toBottomOf="@id/btnTouchToBall"
+       android:layout_marginTop="16dp"
+       tools:targetApi="29" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

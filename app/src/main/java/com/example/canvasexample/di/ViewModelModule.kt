@@ -1,6 +1,7 @@
 package com.example.canvasexample.di
 
 import com.example.canvasexample.ui.menu.MenuViewModel
+import com.example.canvasexample.ui.move.MoveBallViewModel
 import com.example.canvasexample.ui.play.PlayViewModel
 import com.example.canvasexample.ui.shared.CoreViewModel
 import com.example.canvasexample.ui.touch_ball.TouchBallViewModel
@@ -29,4 +30,8 @@ class ViewModelModule {
     @Singleton
     @Provides
     fun provideTouchBallViewModel(router: Router): TouchBallViewModel = TouchBallViewModel(router)
+
+    @Singleton
+    @Provides
+    fun provideMoveBallViewModel(router: Router): MoveBallViewModel = MoveBallViewModel(router)
 }
