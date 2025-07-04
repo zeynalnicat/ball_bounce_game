@@ -8,7 +8,7 @@
     tools:context=".ui.move.MoveBallFragment">
 
 
-    <com.example.canvasexample.components.MoveBallLayout
+    <com.example.ballgame.components.MoveBallLayout
         android:id="@+id/moveBallLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -55,7 +55,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.canvasexample.components.DButton
+    <com.example.ballgame.components.DButton
         android:id="@+id/btnTryAgain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
         app:layout_constraintTop_toTopOf="@id/btnHome"
         tools:targetApi="29" />
 
-    <com.example.canvasexample.components.DButton
+    <com.example.ballgame.components.DButton
         android:id="@+id/btnHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -7,7 +7,7 @@
     android:background="@color/primary"
     tools:context=".ui.menu.MenuFragment">
 
-   <com.example.canvasexample.components.DButton
+   <com.example.ballgame.components.DButton
        android:id="@+id/btnPlay"
        android:layout_width="200dp"
        android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
        app:layout_constraintStart_toStartOf="parent"
        tools:targetApi="29" />
 
-   <com.example.canvasexample.components.DButton
+   <com.example.ballgame.components.DButton
        android:id="@+id/btnMedium"
        android:layout_height="wrap_content"
        android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
        tools:targetApi="29"
       />
 
-   <com.example.canvasexample.components.DButton
+   <com.example.ballgame.components.DButton
        android:id="@+id/btnHard"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
        app:layout_constraintStart_toEndOf="@id/btnMedium"
        app:layout_constraintTop_toTopOf="@+id/btnMedium"
        tools:targetApi="29" />
-   <com.example.canvasexample.components.DButton
+   <com.example.ballgame.components.DButton
        android:id="@+id/btnTouchToBall"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
        android:layout_marginTop="16dp"
        tools:targetApi="29" />
 
-   <com.example.canvasexample.components.DButton
+   <com.example.ballgame.components.DButton
        android:id="@+id/btnBarrier"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"

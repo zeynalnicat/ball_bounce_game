@@ -8,7 +8,7 @@
     tools:context=".ui.touch_ball.TouchToBounceFragment">
 
 
-    <com.example.canvasexample.components.DButton
+    <com.example.ballgame.components.DButton
         android:id="@+id/btnTryAgain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
         app:layout_constraintTop_toTopOf="@id/btnHome"
         tools:targetApi="29" />
 
-    <com.example.canvasexample.components.DButton
+    <com.example.ballgame.components.DButton
         android:id="@+id/btnHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvResult"
         tools:targetApi="29" />
 
-    <com.example.canvasexample.components.TouchToBounceLayout
+    <com.example.ballgame.components.TouchToBounceLayout
         android:id="@+id/layoutTouch"
         android:layout_width="0dp"
         android:layout_height="0dp"

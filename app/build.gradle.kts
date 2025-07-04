@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.canvasexample"
+    namespace = "com.example.ballgame"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.canvasexample"
+        applicationId = "com.example.ballgame"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
