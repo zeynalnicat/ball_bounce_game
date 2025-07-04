@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.canvasexample.databinding.FragmentMenuBinding
-import com.example.canvasexample.navigation.Screens
 import com.example.canvasexample.root.MApplication
 import com.example.canvasexample.ui.shared.CoreIntent
 import com.example.canvasexample.ui.shared.CoreViewModel
@@ -52,6 +51,10 @@ class MenuFragment : Fragment() {
 
         binding.btnTouchToBall.setOnClickListener {
             viewModel.onIntent(MenuIntent.OnNavigateToBounceBall)
+        }
+
+        binding.btnBarrier.setOnClickListener {
+            viewModel.onIntent(MenuIntent.OnNavigateToMoveBall)
         }
         return binding.root
     }

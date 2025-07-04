@@ -12,6 +12,7 @@ class MenuViewModel @Inject constructor(private val router: Router) : ViewModel(
         when (intent) {
             MenuIntent.OnNavigateToPlay -> router.navigateTo(Screens.PlayScreen())
             MenuIntent.OnNavigateToBounceBall -> router.navigateTo(Screens.BounceBallScreen())
+            MenuIntent.OnNavigateToMoveBall -> router.navigateTo(Screens.MoveBallScreen())
         }
     }
 }

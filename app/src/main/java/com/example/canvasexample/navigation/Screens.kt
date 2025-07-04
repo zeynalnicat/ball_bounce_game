@@ -1,9 +1,10 @@
 package com.example.canvasexample.navigation
 
-import com.example.canvasexample.ui.touch_ball.TouchToBounceFragment
 import com.example.canvasexample.ui.menu.MenuFragment
+import com.example.canvasexample.ui.move.MoveBallFragment
 import com.example.canvasexample.ui.play.PlayFragment
 import com.example.canvasexample.ui.result.ResultFragment
+import com.example.canvasexample.ui.touch_ball.TouchToBounceFragment
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 object Screens {
@@ -12,4 +13,6 @@ object Screens {
     fun MenuScreen() = FragmentScreen { MenuFragment() }
     fun ResultScreen() = FragmentScreen { ResultFragment() }
     fun BounceBallScreen() = FragmentScreen { TouchToBounceFragment() }
+
+    fun MoveBallScreen() = FragmentScreen { MoveBallFragment() }
 }
