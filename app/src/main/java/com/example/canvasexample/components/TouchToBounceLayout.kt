@@ -78,7 +78,7 @@ class TouchToBounceLayout(context: Context, attributeSet: AttributeSet) :
         when (event?.action) {
             MotionEvent.ACTION_UP -> {
                 if (viewModel.state.value.clickCounter % 10 == 0) {
-                    clickVelocityY + 15f
+                    clickVelocityY += 5f
                 }
                 viewModel.onIntent(TouchBallIntent.OnDecreaseVelocity(clickVelocityY))
                 invalidate()
