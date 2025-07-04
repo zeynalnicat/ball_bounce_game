@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.lifecycleScope
 import com.example.canvasexample.R
+import com.example.canvasexample.core.animation.Animation
 import com.example.canvasexample.databinding.FragmentMoveBallBinding
 import com.example.canvasexample.root.MApplication
+import com.example.canvasexample.ui.shared.CoreIntent
 import com.example.canvasexample.ui.touch_ball.TouchBallIntent
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,6 +22,9 @@ class MoveBallFragment : Fragment() {
 
     @Inject
     lateinit var viewModel: MoveBallViewModel
+
+    @Inject
+    lateinit var animation: Animation
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,68 +76,12 @@ class MoveBallFragment : Fragment() {
     }
 
     private fun setCommonAnimation() {
-        binding.moveBallLayout.visibility = View.GONE
-        binding.tvResult.animate().apply {
-            alpha(1f)
-            scaleY(1f)
-            scaleX(1f)
-            duration = 500
-            start()
-        }
-        binding.btnHome.animate().apply {
-            alpha(1f)
-            scaleY(1f)
-            scaleX(1f)
-            duration = 500
-            start()
-        }
-
-        binding.btnTryAgain.animate().apply {
-            alpha(1f)
-            scaleY(1f)
-            scaleX(1f)
-            duration = 500
-            start()
-        }
-
-        binding.btnHome.setOnClickListener {
+        animation.resultAnimation(binding.moveBallLayout,binding.tvResult,binding.btnHome,binding.btnTryAgain,{ viewModel.onIntent(MoveBallIntent.OnReset)
+            viewModel.onIntent(MoveBallIntent.OnNavigateHome)},{
             viewModel.onIntent(MoveBallIntent.OnReset)
-            viewModel.onIntent(MoveBallIntent.OnNavigateHome)
-
-        }
-
-        binding.btnTryAgain.setOnClickListener {
-            resetAnim()
-        }
+        })
     }
 
-    private fun resetAnim() {
-        binding.tvResult.animate().apply {
-            alpha(0f)
-            scaleY(0f)
-            scaleX(0f)
-            duration = 300
-            start()
-        }
-        binding.btnHome.animate().apply {
-            alpha(0f)
-            scaleY(0f)
-            scaleX(0f)
-            duration = 300
-            start()
-        }
-
-        binding.btnTryAgain.animate().apply {
-            alpha(0f)
-            scaleY(0f)
-            scaleX(0f)
-            duration = 300
-            start()
-        }
-        viewModel.onIntent(MoveBallIntent.OnReset)
-        binding.moveBallLayout.visibility = View.VISIBLE
-
-    }
 
 
 }

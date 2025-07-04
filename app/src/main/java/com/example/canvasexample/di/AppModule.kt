@@ -1,5 +1,6 @@
 package com.example.canvasexample.di
 
+import com.example.canvasexample.core.animation.Animation
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
@@ -20,4 +21,8 @@ class AppModule {
     @Provides
     @Singleton
     fun provideNavigatorHolder(): NavigatorHolder = cicerone.getNavigatorHolder()
+
+    @Provides
+    @Singleton
+    fun provideAnimation(): Animation = Animation()
 }

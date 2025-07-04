@@ -9,6 +9,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.canvasexample.R
+import com.example.canvasexample.core.animation.Animation
 import com.example.canvasexample.databinding.FragmentPlayBinding
 import com.example.canvasexample.root.MApplication
 import com.example.canvasexample.ui.shared.CoreEffect
@@ -26,6 +27,9 @@ class PlayFragment : Fragment() {
 
     @Inject
     lateinit var viewModel: PlayViewModel
+
+    @Inject
+    lateinit var animation: Animation
 
     private lateinit var countDownTimer: CountDownTimer
 
@@ -93,21 +97,7 @@ class PlayFragment : Fragment() {
                     CoreEffect.ShowDecreased -> {
                         binding.tvScoreInfo.text = "- 10"
                         binding.tvScoreInfo.setTextColor(resources.getColor(R.color.red))
-                        binding.tvScoreInfo.animate().apply {
-                            duration = 700
-                            alpha(1f)
-                            scaleX(1f)
-                            scaleY(1f)
-                            withEndAction {
-                                binding.tvScoreInfo.animate().apply {
-                                    duration = 300
-                                    alpha(0f)
-                                    scaleX(0.5f)
-                                    scaleY(0.5f)
-                                    start()
-                                }
-                            }
-                        }.start()
+                        animation.scoreAnimation(binding.tvScoreInfo)
 
 
                     }
@@ -115,21 +105,7 @@ class PlayFragment : Fragment() {
                     CoreEffect.ShowRaised -> {
                         binding.tvScoreInfo.text = "+ 20"
                         binding.tvScoreInfo.setTextColor(resources.getColor(R.color.secondary))
-                        binding.tvScoreInfo.animate().apply {
-                            duration = 700
-                            alpha(1f)
-                            scaleX(1f)
-                            scaleY(1f)
-                                .withEndAction {
-                                    binding.tvScoreInfo.animate().apply {
-                                        duration = 300
-                                        alpha(0f)
-                                        scaleX(0.5f)
-                                        scaleY(0.5f)
-                                        start()
-                                    }
-                                }
-                        }.start()
+                        animation.scoreAnimation(binding.tvScoreInfo)
 
                     }
                     CoreEffect.OnFail -> animationOnFail()
@@ -145,6 +121,7 @@ class PlayFragment : Fragment() {
         binding.tvResult.text = "Time out & Score: ${coreViewModel.state.value.score}"
         binding.tvResult.setTextColor(resources.getColor(R.color.secondary))
         setCommonAnimation()
+
     }
 
     private fun animationOnFail(){
@@ -154,68 +131,13 @@ class PlayFragment : Fragment() {
     }
 
     private fun setCommonAnimation(){
-        binding.playLayouts.visibility = View.GONE
-        binding.tvResult.animate().apply {
-            alpha(1f)
-            scaleY(1f)
-            scaleX(1f)
-            duration = 500
-            start()
-        }
-        binding.btnHome.animate().apply {
-            alpha(1f)
-            scaleY(1f)
-            scaleX(1f)
-            duration = 500
-            start()
-        }
-
-        binding.btnTryAgain.animate().apply {
-            alpha(1f)
-            scaleY(1f)
-            scaleX(1f)
-            duration = 500
-            start()
-        }
-
-        binding.btnHome.setOnClickListener {
+        animation.resultAnimation(binding.playLayouts,binding.tvResult,binding.btnHome,binding.btnTryAgain,{coreViewModel.onIntent(CoreIntent.OnReset)
+            coreViewModel.onIntent(CoreIntent.OnNavigateToHome)},{
+            countDownTimer.start()
             coreViewModel.onIntent(CoreIntent.OnReset)
-            coreViewModel.onIntent(CoreIntent.OnNavigateToHome)
-
         }
 
-        binding.btnTryAgain.setOnClickListener {
-            resetAnim()
-        }
-    }
-
-    private fun resetAnim(){
-        countDownTimer.start()
-        binding.tvResult.animate().apply {
-            alpha(0f)
-            scaleY(0f)
-            scaleX(0f)
-            duration = 300
-            start()
-        }
-        binding.btnHome.animate().apply {
-            alpha(0f)
-            scaleY(0f)
-            scaleX(0f)
-            duration = 300
-            start()
-        }
-
-        binding.btnTryAgain.animate().apply {
-            alpha(0f)
-            scaleY(0f)
-            scaleX(0f)
-            duration = 300
-            start()
-        }
-        coreViewModel.onIntent(CoreIntent.OnReset)
-        binding.playLayouts.visibility = View.VISIBLE
-
+        )
     }
 
 

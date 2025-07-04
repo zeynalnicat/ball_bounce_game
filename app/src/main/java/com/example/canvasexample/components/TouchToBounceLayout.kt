@@ -58,7 +58,7 @@ class TouchToBounceLayout(context: Context, attributeSet: AttributeSet) :
             viewModel.onIntent(TouchBallIntent.OnFail)
         }
 
-        if (viewModel.state.value.ballY + ballRadius <= 0) {
+        if (viewModel.state.value.ballY + ballRadius <= 20f) {
             viewModel.onIntent(TouchBallIntent.OnWin)
         }
 
