@@ -4,6 +4,8 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.os.Handler
+import android.os.Looper
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
@@ -107,7 +109,11 @@ class MoveBallLayout(context: Context, attributeSet: AttributeSet) : View(contex
             )
         }
 
-        postInvalidateOnAnimation()
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            postInvalidateOnAnimation()
+        },16)
+
 
     }
 
@@ -128,7 +134,10 @@ class MoveBallLayout(context: Context, attributeSet: AttributeSet) : View(contex
             MotionEvent.ACTION_MOVE -> {
                 ballY = event.y - ballRadius
                 ballX = event.x - ballRadius
-                invalidate()
+                Handler(Looper.getMainLooper()).postDelayed({
+                    invalidate()
+                },16)
+
             }
 
         }

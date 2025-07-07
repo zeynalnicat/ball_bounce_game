@@ -84,6 +84,7 @@ class PlayLayouts(context: Context, attributeSet: AttributeSet? = null) :
         if (ballHitsHorizontally && ballHitsVertically ) {
             viewModel.onIntent(CoreIntent.OnChangeVelocityY)
             viewModel.onIntent(CoreIntent.RaiseScore)
+            ballY = (ballY  + paddlePaint.strokeWidth + 1)
 
         }
 
