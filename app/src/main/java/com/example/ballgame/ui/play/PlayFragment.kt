@@ -62,6 +62,7 @@ class PlayFragment : Fragment() {
             }
 
             override fun onFinish() {
+                countDownTimer.cancel()
                 animationOnWin()
             }
         }
@@ -131,6 +132,7 @@ class PlayFragment : Fragment() {
     private fun animationOnFail(){
         binding.tvResult.text = "YOU FAIL!"
         binding.tvResult.setTextColor(resources.getColor(R.color.red))
+        countDownTimer.cancel()
         setCommonAnimation()
     }
 
