@@ -7,8 +7,8 @@ import android.graphics.Paint
 import android.graphics.Path
 import android.util.AttributeSet
 import android.view.View
+import androidx.core.content.withStyledAttributes
 import com.example.ballgame.R
-import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.random.Random
@@ -26,9 +26,10 @@ class BackgroundStars(context: Context,attributeSet: AttributeSet): View(context
     private val stars = mutableListOf<Pair<Float,Float>>()
 
     init{
-        val attr = context.obtainStyledAttributes(attributeSet,R.styleable.BackgroundStars)
-        val count = attr.getInt(R.styleable.BackgroundStars_starCount,100)
-        starsCount = count
+        context.withStyledAttributes(attributeSet,R.styleable.BackgroundStars){
+            starsCount = getInt(R.styleable.BackgroundStars_starCount,100)
+        }
+
 
     }
 
