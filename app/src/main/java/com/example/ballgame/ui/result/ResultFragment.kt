@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.example.ballgame.R
+import com.example.ballgame.core.constants.AppStrings
 import com.example.ballgame.databinding.FragmentResultBinding
 import com.example.ballgame.root.MApplication
 import com.example.ballgame.ui.shared.CoreIntent
@@ -49,10 +50,10 @@ class ResultFragment : Fragment() {
             coreViewModel.state.collect {
                 if (it.score < 0) {
                     binding.tvScore.setTextColor(resources.getColor(R.color.red))
-                    binding.tvScore.text = "Failed"
+                    binding.tvScore.text = AppStrings.failed
                 } else {
                     binding.tvTime.visibility = View.VISIBLE
-                    binding.tvScore.text = "Score: ${it.score}"
+                    binding.tvScore.text = "${AppStrings.score} ${it.score}"
                 }
 
             }

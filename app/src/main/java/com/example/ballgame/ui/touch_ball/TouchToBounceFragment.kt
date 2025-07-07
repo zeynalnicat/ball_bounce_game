@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.ballgame.R
 import com.example.ballgame.databinding.FragmentTouchToBounceBinding
 import com.example.ballgame.core.animation.Animation
+import com.example.ballgame.core.constants.AppStrings
 import com.example.ballgame.root.MApplication
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -56,13 +57,13 @@ class TouchToBounceFragment : Fragment() {
     }
 
     private fun animationOnWin(){
-        binding.tvResult.text = "YOU WIN!"
+        binding.tvResult.text = AppStrings.youWin
         binding.tvResult.setTextColor(resources.getColor(R.color.secondary))
         setCommonAnimation()
     }
 
     private fun animationOnFail(){
-        binding.tvResult.text = "YOU FAIL!"
+        binding.tvResult.text = AppStrings.youFail
         binding.tvResult.setTextColor(resources.getColor(R.color.red))
         setCommonAnimation()
     }

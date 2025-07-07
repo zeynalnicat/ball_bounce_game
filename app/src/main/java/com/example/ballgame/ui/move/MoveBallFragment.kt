@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.ballgame.R
 import com.example.ballgame.core.animation.Animation
+import com.example.ballgame.core.constants.AppStrings
 import com.example.ballgame.databinding.FragmentMoveBallBinding
 import com.example.ballgame.root.MApplication
 import kotlinx.coroutines.launch
@@ -62,13 +63,13 @@ class MoveBallFragment : Fragment() {
     }
 
     private fun animationOnWin() {
-        binding.tvResult.text = "Game is over"
+        binding.tvResult.text = AppStrings.gameOver
         binding.tvResult.setTextColor(resources.getColor(R.color.secondary))
         setCommonAnimation()
     }
 
     private fun animationOnFail() {
-        binding.tvResult.text = "YOU FAIL!"
+        binding.tvResult.text = AppStrings.youFail
         binding.tvResult.setTextColor(resources.getColor(R.color.red))
         setCommonAnimation()
     }

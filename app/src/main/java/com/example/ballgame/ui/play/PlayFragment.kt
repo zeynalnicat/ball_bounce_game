@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.ballgame.R
 import com.example.ballgame.core.animation.Animation
+import com.example.ballgame.core.constants.AppStrings
 import com.example.ballgame.databinding.FragmentPlayBinding
 
 import com.example.ballgame.root.MApplication
@@ -100,7 +101,7 @@ class PlayFragment : Fragment() {
             coreViewModel.effect.collect {
                 when (it) {
                     CoreEffect.ShowDecreased -> {
-                        binding.tvScoreInfo.text = "- 10"
+                        binding.tvScoreInfo.text = AppStrings.scoreDown
                         binding.tvScoreInfo.setTextColor(resources.getColor(R.color.red))
                         animation.scoreAnimation(binding.tvScoreInfo)
 
@@ -108,7 +109,7 @@ class PlayFragment : Fragment() {
                     }
 
                     CoreEffect.ShowRaised -> {
-                        binding.tvScoreInfo.text = "+ 20"
+                        binding.tvScoreInfo.text = AppStrings.scoreUp
                         binding.tvScoreInfo.setTextColor(resources.getColor(R.color.secondary))
                         animation.scoreAnimation(binding.tvScoreInfo)
 
@@ -123,14 +124,14 @@ class PlayFragment : Fragment() {
     }
 
     private fun animationOnWin(){
-        binding.tvResult.text = "Time out"
+        binding.tvResult.text = AppStrings.timeOut
         binding.tvResult.setTextColor(resources.getColor(R.color.secondary))
         setCommonAnimation()
 
     }
 
     private fun animationOnFail(){
-        binding.tvResult.text = "YOU FAIL!"
+        binding.tvResult.text = AppStrings.youFail
         binding.tvResult.setTextColor(resources.getColor(R.color.red))
         countDownTimer.cancel()
         setCommonAnimation()
