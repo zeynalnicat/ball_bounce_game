@@ -3,7 +3,10 @@
 
     <declare-styleable name="DButton">
 
-        <attr name="backgroundDrawable" format="reference"/>
+        <attr name="backgroundDrawable" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="BackgroundStars">
+        <attr name="starCount" format="integer"/>
+    </declare-styleable>
 </resources>

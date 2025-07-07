@@ -8,6 +8,14 @@
     android:layout_height="match_parent"
     >
 
+    <com.example.ballgame.components.BackgroundStars
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:starCount="30"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <com.example.ballgame.components.PlayLayouts
         android:id="@+id/playLayouts"
@@ -41,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="0"
+        android:textStyle="bold"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintStart_toStartOf="@+id/textView"
@@ -56,6 +65,7 @@
         tools:text="+ 24"
         android:alpha="0"
         android:scaleX="0.5"
+        android:textStyle="bold"
         android:scaleY="0.5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,6 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
         android:textColor="@color/stopwatch"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"

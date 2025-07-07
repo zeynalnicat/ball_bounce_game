@@ -30,6 +30,7 @@ class MoveBallLayout(context: Context, attributeSet: AttributeSet) : View(contex
         application.appComponent.inject(this)
     }
 
+
     private val barrierPaint = Paint().apply {
         color = Color.WHITE
         isAntiAlias = true
@@ -135,7 +136,7 @@ class MoveBallLayout(context: Context, attributeSet: AttributeSet) : View(contex
                 ballY = event.y - ballRadius
                 ballX = event.x - ballRadius
                 Handler(Looper.getMainLooper()).postDelayed({
-                    invalidate()
+                    postInvalidateOnAnimation()
                 },16)
 
             }
